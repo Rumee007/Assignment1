@@ -19,17 +19,20 @@ public class Assignment1 {
     public static void main(String[] args) {
 
         linkedList = new LinkedList();
-        linkedList.add(1);
-        linkedList.add(2);
-        linkedList.add(3);
-        linkedList.add(4);
-        linkedList.add(5);
-        linkedList.add(6);
-        linkedList.add(7);
+        linkedList.add(11);
+        linkedList.add(22);
+        linkedList.add(33);
+        linkedList.add(44);
+        linkedList.add(55);
+        linkedList.add(66);
+        linkedList.add(77);
         System.out.println("Linked List value :" + linkedList.toString());
-        linkedList.remove();
+        //linkedList.remove();
         System.out.println("After :" + linkedList.toString());
- 
+
+        linkedList.removeAll(56);
+        System.out.println("After :" + linkedList.toString());
+
     }
 }
 
@@ -86,7 +89,7 @@ class LinkedList {
     public void remove() {
         Node nodeCurrent = head;
         if (head != null) {
-            for (int i = 0; i < size()-1; i++) {
+            for (int i = 0; i < size() - 1; i++) {
                 if (nodeCurrent.getNext() != null) {
                     nodeCurrent = nodeCurrent.getNext();
                 }
@@ -94,6 +97,21 @@ class LinkedList {
             nodeCurrent.setNext(nodeCurrent.getNext().getNext());
             decrementCounter();
         }
+    }
+
+    public void removeAll(int value) {
+        Node nodeCurrent = head;
+        for (int i = 0; i < size(); i++) {
+            int data = (int) nodeCurrent.getNext().getData();
+            if (value < data) {
+                System.out.println("Large value: " + data);
+
+            }
+            nodeCurrent = nodeCurrent.getNext();
+            nodeCurrent.setNext(nodeCurrent.getNext());
+            // TODO.
+        }
+
     }
 
     public int size() {
