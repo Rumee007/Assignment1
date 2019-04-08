@@ -19,14 +19,17 @@ public class Assignment1 {
     public static void main(String[] args) {
 
         linkedList = new LinkedList();
-        linkedList.add(34);
-        linkedList.add(45);
-        linkedList.add(13);
-        linkedList.add(64);
-        linkedList.add(85);
-        linkedList.add(81);
-
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        linkedList.add(4);
+        linkedList.add(5);
+        linkedList.add(6);
+        linkedList.add(7);
         System.out.println("Linked List value :" + linkedList.toString());
+        linkedList.remove();
+        System.out.println("After :" + linkedList.toString());
+ 
     }
 }
 
@@ -58,6 +61,10 @@ class LinkedList {
         counter++;
     }
 
+    private static void decrementCounter() {
+        counter--;
+    }
+
     public Object get(int index) {
         if (index < 0) {
             return null;
@@ -69,7 +76,6 @@ class LinkedList {
                 if (nodeCurrent.getNext() == null) {
                     return null;
                 }
-
                 nodeCurrent = nodeCurrent.getNext();
             }
             return nodeCurrent.getData();
@@ -78,7 +84,16 @@ class LinkedList {
     }
 
     public void remove() {
-        // tail last data
+        Node nodeCurrent = head;
+        if (head != null) {
+            for (int i = 0; i < size()-1; i++) {
+                if (nodeCurrent.getNext() != null) {
+                    nodeCurrent = nodeCurrent.getNext();
+                }
+            }
+            nodeCurrent.setNext(nodeCurrent.getNext().getNext());
+            decrementCounter();
+        }
     }
 
     public int size() {
